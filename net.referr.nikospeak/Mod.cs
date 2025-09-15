@@ -1,0 +1,37 @@
+﻿using OneShotMG;
+using WorldMachineLoader.API.Core;
+using WorldMachineLoader.API.Events.Lifecycle;
+using WorldMachineLoader.API.Interfaces;
+
+namespace net.referr.nikospeak
+{
+    public class Mod : IMod
+    {
+        public void OnLoad(ModContext modContext)
+        {
+            Globals.Context = modContext;
+            EventBus.Subscribe<GraphicsDeviceInit>(GDeviceInit);
+            EventBus.Subscribe<WindowManagerInitEvent>(OnWinManInit);
+        }
+
+        public void OnShutdown() { }
+
+        private void OnWinManInit(WindowManagerInitEvent e)
+        {
+            Game1.windowMan.AddWindow(new SpeakWindow("Niko Speak!", "oneshot", 150, 100, false));
+        }
+
+        private void GDeviceInit(GraphicsDeviceInit e)
+        {
+            Globals.GraphicsDevice = e.GraphicsDevice;
+        }
+
+        [GamePatch(typeof(Game1), "InitWindowManager", PatchType.Postfix)]
+        static void WindowManInit_Patch()
+        {
+            EventBus.Invoke<WindowManagerInitEvent>(new WindowManagerInitEvent());
+        }
+    }
+
+    public class WindowManagerInitEvent { }
+}

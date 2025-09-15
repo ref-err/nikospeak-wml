@@ -1,0 +1,9 @@
+{
+    "name": "Niko Speak!",
+	"id": "net.referr.nikospeak",
+    "description": "This mod adds a little window, where Niko makes \"meow\" noise when you press a button!",
+    "author": "referr",
+    "version": "1.0.0",
+    "assembly_name": "net.referr.nikospeak",
+	"icon": "icon.png"
+}
