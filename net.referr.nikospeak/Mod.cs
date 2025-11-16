@@ -1,8 +1,7 @@
-﻿using OneShotMG;
-using WorldMachineLoader.API.Core;
-using WorldMachineLoader.API.Events.Environment;
+﻿using WorldMachineLoader.API.Core;
 using WorldMachineLoader.API.Events.Lifecycle;
 using WorldMachineLoader.API.Interfaces;
+using WorldMachineLoader.API.UI;
 
 namespace net.referr.nikospeak
 {
@@ -12,15 +11,10 @@ namespace net.referr.nikospeak
         {
             Globals.Context = modContext;
             EventBus.Subscribe<GraphicsDeviceInit>(GDeviceInit);
-            EventBus.Subscribe<WindowManagerInitializedEvent>(OnWinManInit);
+            WindowRegistry.Register<SpeakWindow>(modContext, "Niko Speak!");
         }
 
         public void OnShutdown() { }
-
-        private void OnWinManInit(WindowManagerInitializedEvent e)
-        {
-            Game1.windowMan.AddWindow(new SpeakWindow("Niko Speak!", "oneshot", 150, 100, false));
-        }
 
         private void GDeviceInit(GraphicsDeviceInit e)
         {
