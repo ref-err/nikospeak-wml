@@ -4,7 +4,6 @@
 This mod was made to test the functionality of the [WorldMachineLoader](https://github.com/ref-err/WorldMachineLoader) and was inspired by the [Nikospeak](https://github.com/pixel1nova/nikospeak) program by pixel1nova.  
 Click the button to hear Niko make a cat sound!  
 There is also a click counter at the top right of the window!  
-Currently, the window pops up when the desktop gets loaded and... You can't close it. You will be stuck with Niko forever.  
 
 ## Installation
 Before installing the mod, make sure you have **WorldMachineLoader** installed and launched it at least one time.
